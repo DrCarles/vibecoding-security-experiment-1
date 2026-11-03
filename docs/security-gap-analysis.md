@@ -9,17 +9,24 @@
 
 ## 1. Executive summary
 
-Chirp **fully meets 5 of the 31 requirements, partially meets 12 and does not meet 14**.
+> ### 31 requirements · 35% compliance score
+> ✅ **5** Met  ·  🟡 **12** Partial  ·  ❌ **14** Not met
+>
+> 🟩🟩🟩🟩🟩🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟨🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+>
+> 🚨 **8** requirements are P1 (fix before production)
 
-| Domain | Met | Partial | Not met | Total |
-|---|:-:|:-:|:-:|:-:|
-| Authentication (AUT) | 3 | 5 | 5 | 13 |
-| Authorization (AUZ) | 1 | 3 | 2 | 6 |
-| Data at Rest (DAR) | 0 | 1 | 2 | 3 |
-| Data in Transit (DIT) | 0 | 1 | 2 | 3 |
-| Data Sanitization (DSN) | 1 | 1 | 0 | 2 |
-| Privacy (PRV) | 0 | 1 | 3 | 4 |
-| **Total** | **5** | **12** | **14** | **31** |
+| | Domain | Requirements (one square each) | ✅ | 🟡 | ❌ | Score |
+|:-:|---|---|:-:|:-:|:-:|:-:|
+| 🔑 | **Authentication** (AUT) | 🟩🟩🟩🟨🟨🟨🟨🟨🟥🟥🟥🟥🟥 | 3 | 5 | 5 | 🟡 42% |
+| 🛡️ | **Authorization** (AUZ) | 🟩🟨🟨🟨🟥🟥 | 1 | 3 | 2 | 🟡 42% |
+| 🧹 | **Data Sanitization** (DSN) | 🟩🟨 | 1 | 1 | · | 🟢 75% |
+| 💾 | **Data at Rest** (DAR) | 🟨🟥🟥 | · | 1 | 2 | 🔴 17% |
+| 🔒 | **Data in Transit** (DIT) | 🟨🟥🟥 | · | 1 | 2 | 🔴 17% |
+| 🕵️ | **Privacy** (PRV) | 🟨🟥🟥🟥 | · | 1 | 3 | 🔴 13% |
+| | **Total** | **31** | **5** | **12** | **14** | 🔴 **35%** |
+
+**Score** = (Met + ½ × Partial) ÷ total requirements · 🟢 70% or more · 🟡 40–69% · 🔴 below 40% · 🟩 Met · 🟨 Partial · 🟥 Not met
 
 **Strengths.** The core web-application controls are solid:
 - Passwords are salted and hashed (Argon2id).

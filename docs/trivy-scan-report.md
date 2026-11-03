@@ -17,20 +17,60 @@ The scan found **no secrets and no Dockerfile misconfigurations**, but **many ou
 - **The Debian base image has 85 known CVEs with no fix available yet.** Most affect tools the app never runs (`mount`, `login`, `util-linux`).
 - **The `postgres:17-alpine` image** carries an outdated `gosu` binary built with an old Go version: 61 findings, all fixed in newer image releases.
 
-| Target | Critical | High | Medium | Low | Unknown | Fixable | Notes |
-|---|:-:|:-:|:-:|:-:|:-:|:-:|---|
-| `chirp-backend`: Python packages | **6** | **50** | 30 | 6 | 0 | 92 / 92 | 84 in app dependencies, 8 in pip's bundled packages |
-| `chirp-backend`: Debian 13.7 OS | 0 | 45 | 72 | 61 | 7 | 0 / 185 | 85 unique CVEs; no fixes released |
-| `chirp-frontend`: Node packages | 0 | 13 | 22 | 4 | 0 | 39 / 39 | 16 in the app, 23 in the npm tool bundled with Node |
-| `chirp-frontend`: Alpine 3.24.3 OS | 0 | 0 | 0 | 0 | 0 | – | Clean |
-| `postgres:17-alpine`: `gosu` (Go) | 1 | 25 | 31 | 3 | 1 | 61 / 61 | Old Go stdlib in the privilege-drop helper |
-| `postgres:17-alpine`: Alpine 3.24.3 OS | 0 | 0 | 0 | 0 | 0 | – | Clean |
-| Repo: `backend/requirements.txt` | 6 | 42 | 25 | 4 | 0 | 77 / 77 | Same as the image's direct dependencies |
-| Repo: `frontend/package-lock.json` | 0 | 3 | 10 | 3 | 0 | 16 / 16 | Same as the image's app dependencies |
-| Repo: Dockerfiles (misconfig) | – | – | – | – | – | – | **0 failures**, 27/27 checks passed in each Dockerfile |
-| Repo and images: secrets | – | – | – | – | – | – | **0 secrets found** |
+> ### 377 findings across 3 images
+> 🔴 **7** Critical  ·  🟠 **133** High  ·  🟡 **155** Medium  ·  🔵 **74** Low  ·  ⚪ **8** Unknown
+>
+> 🚨 **100** in Chirp's own dependencies, all fixable by upgrading  ·  🧱 **185** in the base OS, no fix available  ·  📦 **92** in bundled tools the app doesn't use
+>
+> ✅ 0 secrets  ·  ✅ 0 Dockerfile misconfigurations (54/54 checks passed)
 
-*Counts are Trivy findings, so a CVE that affects several OS packages counts once per package. The repository rows repeat the image findings and are not additional.*
+<table>
+<tr>
+<td width="50%">
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"pie1": "#fbc02d", "pie2": "#f57c00", "pie3": "#1e88e5", "pie4": "#9e9e9e", "pie5": "#d32f2f", "pieStrokeColor": "#ffffff", "pieOuterStrokeWidth": "0px", "pieSectionTextColor": "#000000"}}}%%
+pie showData
+    title Findings by severity
+    "Medium" : 155
+    "High" : 133
+    "Low" : 74
+    "Unknown" : 8
+    "Critical" : 7
+```
+
+</td>
+<td width="50%">
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"pie1": "#9e9e9e", "pie2": "#d32f2f", "pie3": "#90caf9", "pieStrokeColor": "#ffffff", "pieOuterStrokeWidth": "0px", "pieSectionTextColor": "#000000"}}}%%
+pie showData
+    title Findings by action needed
+    "Base OS, no fix yet" : 185
+    "App dependencies, fix now" : 100
+    "Bundled tools, not used" : 92
+```
+
+</td>
+</tr>
+</table>
+
+| | Target | 🔴 Crit | 🟠 High | 🟡 Med | 🔵 Low | ⚪ Unk | Fixable | Notes |
+|:-:|---|:-:|:-:|:-:|:-:|:-:|:-:|---|
+| 🚨 | **`chirp-backend`**: Python packages | **6** | **50** | 30 | 6 | · | 🟩 92/92 | 84 in app dependencies, 8 bundled inside pip |
+| 🧱 | **`chirp-backend`**: Debian 13.7 OS | · | 45 | 72 | 61 | 7 | ⬜ 0/185 | 85 unique CVEs; no fixes released yet |
+| ⚠️ | **`chirp-frontend`**: Node packages | · | 13 | 22 | 4 | · | 🟩 39/39 | 16 in the app, 23 in the npm tool bundled with Node |
+| ✅ | **`chirp-frontend`**: Alpine 3.24.3 OS | · | · | · | · | · | – | Clean |
+| ⚠️ | **`postgres:17-alpine`**: `gosu` (Go) | 1 | 25 | 31 | 3 | 1 | 🟩 61/61 | Old Go stdlib in the startup privilege-drop helper |
+| ✅ | **`postgres:17-alpine`**: Alpine 3.24.3 OS | · | · | · | · | · | – | Clean |
+| ↳ | Repo: `backend/requirements.txt` | 6 | 42 | 25 | 4 | · | 🟩 77/77 | Repeats the backend's direct dependencies |
+| ↳ | Repo: `frontend/package-lock.json` | · | 3 | 10 | 3 | · | 🟩 16/16 | Repeats the frontend's app dependencies |
+| ✅ | Repo: Dockerfiles (misconfig) | · | · | · | · | · | – | 0 failures; 27/27 checks passed in each |
+| ✅ | Repo and images: secrets | · | · | · | · | · | – | 0 secrets found |
+
+**Status:** 🚨 exploitable, fix now · ⚠️ fixable, lower exposure · 🧱 no fix available, reduce the base image · ✅ clean · ↳ repeats an image row above (not counted twice)
+
+*Counts are Trivy findings, so a CVE that affects several OS packages counts once per package. The pie charts render on GitHub; in VS Code they need a Mermaid preview extension.*
 
 ### Verdict
 

@@ -24,37 +24,6 @@ The scan found **no secrets and no Dockerfile misconfigurations**, but **many ou
 >
 > ✅ 0 secrets  ·  ✅ 0 Dockerfile misconfigurations (54/54 checks passed)
 
-<table>
-<tr>
-<td width="50%">
-
-```mermaid
-%%{init: {"theme": "base", "themeVariables": {"pie1": "#fbc02d", "pie2": "#f57c00", "pie3": "#1e88e5", "pie4": "#9e9e9e", "pie5": "#d32f2f", "pieStrokeColor": "#ffffff", "pieOuterStrokeWidth": "0px", "pieSectionTextColor": "#000000"}}}%%
-pie showData
-    title Findings by severity
-    "Medium" : 155
-    "High" : 133
-    "Low" : 74
-    "Unknown" : 8
-    "Critical" : 7
-```
-
-</td>
-<td width="50%">
-
-```mermaid
-%%{init: {"theme": "base", "themeVariables": {"pie1": "#9e9e9e", "pie2": "#d32f2f", "pie3": "#90caf9", "pieStrokeColor": "#ffffff", "pieOuterStrokeWidth": "0px", "pieSectionTextColor": "#000000"}}}%%
-pie showData
-    title Findings by action needed
-    "Base OS, no fix yet" : 185
-    "App dependencies, fix now" : 100
-    "Bundled tools, not used" : 92
-```
-
-</td>
-</tr>
-</table>
-
 | | Target | 🔴 Crit | 🟠 High | 🟡 Med | 🔵 Low | ⚪ Unk | Fixable | Notes |
 |:-:|---|:-:|:-:|:-:|:-:|:-:|:-:|---|
 | 🚨 | **`chirp-backend`**: Python packages | **6** | **50** | 30 | 6 | · | 🟩 92/92 | 84 in app dependencies, 8 bundled inside pip |

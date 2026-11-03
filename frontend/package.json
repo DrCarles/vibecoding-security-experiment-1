@@ -1,0 +1,21 @@
+{
+  "name": "chirp-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chirp web frontend: serves the single-page app and proxies the API.",
+  "type": "module",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "compression": "1.7.5",
+    "express": "4.21.2",
+    "helmet": "8.0.0",
+    "http-proxy-middleware": "3.0.3",
+    "morgan": "1.10.0"
+  }
+}

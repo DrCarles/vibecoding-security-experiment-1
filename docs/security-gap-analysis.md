@@ -44,7 +44,7 @@
 3. **Privacy and data protection.** Users can't delete their account, private fields can't be set to empty, nothing is retained or deleted on a schedule, and personal data isn't encrypted at the application level (PRV-001 to PRV-004, DAR-001).
 4. **Infrastructure hardening.** The site has no TLS of its own, the app uses a database superuser, there are no backups, and the API docs are public (DIT-002, DAR-002, DAR-003, DIT-001).
 
-**Must fix before production:** DIT-002 (TLS), AUT-011 and AUT-007 (sessions), DAR-002 (database superuser). All P1 items are listed in the [scorecard](#2-scorecard).
+**Must fix before production:** DIT-002 (TLS), AUT-011 and AUT-007 (sessions), DAR-002 (database superuser).
 
 ### Status legend
 
@@ -60,39 +60,39 @@ Priority: **P1** = fix before production · **P2** = fix in the next release · 
 
 ## 2. Scorecard
 
-| ID | Requirement (short) | Status | Priority |
-|---|---|:-:|:-:|
-| FR-APP-AUT-001 | Unique, never-reused user ID (GUID) | 🟡 | P3 |
-| FR-APP-AUT-002 | All accounts manageable (edit, delete, password) | ❌ | P2 |
-| FR-APP-AUT-003 | Password policy (NIST 800-63B) | 🟡 | P2 |
-| FR-APP-AUT-004 | Secure password storage | 🟡 | P3 |
-| FR-APP-AUT-005 | Two-factor authentication *(should)* | ❌ | P3 |
-| FR-APP-AUT-006 | Brute-force protection (5 attempts → 5 min lock) | 🟡 | P2 |
-| FR-APP-AUT-007 | Automatic log-off after inactivity (10 min) | ❌ | P1 |
-| FR-APP-AUT-008 | Log user-management activity | ❌ | P1 |
-| FR-APP-AUT-009 | User enumeration protection | 🟡 | P2 |
-| FR-APP-AUT-010 | Shoulder-surfing protection | ✅ | – |
-| FR-APP-AUT-011 | Server-side session invalidation on logout | ❌ | P1 |
-| FR-APP-AUT-012 | Re-authentication for sensitive actions | ✅ | – |
-| FR-APP-AUT-013 | Invalidate all sessions on password change | ✅ | – |
-| FR-APP-AUZ-001 | Authorization enforced in business logic | ✅ | – |
-| FR-APP-AUZ-002 | Deny by default | 🟡 | P2 |
-| FR-APP-AUZ-003 | Clearly defined permissions | 🟡 | P3 |
-| FR-APP-AUZ-004 | Role-based access control *(should)* | ❌ | P3 |
-| FR-APP-AUZ-005 | Least privilege and separation of duties by default | 🟡 | P1 |
-| FR-APP-AUZ-006 | Log all authorization decisions | ❌ | P2 |
-| FR-APP-DAR-001 | Encrypt sensitive data at rest | ❌ | P2 |
-| FR-APP-DAR-002 | Least-privilege data access | 🟡 | P1 |
-| FR-APP-DAR-003 | Backup and restore | ❌ | P2 |
-| FR-APP-DIT-001 | Restrict exposed endpoints | 🟡 | P1 |
-| FR-APP-DIT-002 | Secure external channels (TLS) | ❌ | P1 |
-| FR-APP-DIT-003 | Secure internal channels *(should)* | ❌ | P3 |
-| FR-APP-DSN-001 | Input validation | 🟡 | P2 |
-| FR-APP-DSN-002 | Output sanitization | ✅ | – |
-| FR-APP-PRV-001 | Data minimization | 🟡 | P2 |
-| FR-APP-PRV-002 | Data lifecycle and retention | ❌ | P2 |
-| FR-APP-PRV-003 | Right to erasure | ❌ | P1 |
-| FR-APP-PRV-004 | Secure data disposal | ❌ | P3 |
+| ID | Requirement (short) | Status |
+|---|---|:-:|
+| FR-APP-AUT-001 | Unique, never-reused user ID (GUID) | 🟡 |
+| FR-APP-AUT-002 | All accounts manageable (edit, delete, password) | ❌ |
+| FR-APP-AUT-003 | Password policy (NIST 800-63B) | 🟡 |
+| FR-APP-AUT-004 | Secure password storage | 🟡 |
+| FR-APP-AUT-005 | Two-factor authentication *(should)* | ❌ |
+| FR-APP-AUT-006 | Brute-force protection (5 attempts → 5 min lock) | 🟡 |
+| FR-APP-AUT-007 | Automatic log-off after inactivity (10 min) | ❌ |
+| FR-APP-AUT-008 | Log user-management activity | ❌ |
+| FR-APP-AUT-009 | User enumeration protection | 🟡 |
+| FR-APP-AUT-010 | Shoulder-surfing protection | ✅ |
+| FR-APP-AUT-011 | Server-side session invalidation on logout | ❌ |
+| FR-APP-AUT-012 | Re-authentication for sensitive actions | ✅ |
+| FR-APP-AUT-013 | Invalidate all sessions on password change | ✅ |
+| FR-APP-AUZ-001 | Authorization enforced in business logic | ✅ |
+| FR-APP-AUZ-002 | Deny by default | 🟡 |
+| FR-APP-AUZ-003 | Clearly defined permissions | 🟡 |
+| FR-APP-AUZ-004 | Role-based access control *(should)* | ❌ |
+| FR-APP-AUZ-005 | Least privilege and separation of duties by default | 🟡 |
+| FR-APP-AUZ-006 | Log all authorization decisions | ❌ |
+| FR-APP-DAR-001 | Encrypt sensitive data at rest | ❌ |
+| FR-APP-DAR-002 | Least-privilege data access | 🟡 |
+| FR-APP-DAR-003 | Backup and restore | ❌ |
+| FR-APP-DIT-001 | Restrict exposed endpoints | 🟡 |
+| FR-APP-DIT-002 | Secure external channels (TLS) | ❌ |
+| FR-APP-DIT-003 | Secure internal channels *(should)* | ❌ |
+| FR-APP-DSN-001 | Input validation | 🟡 |
+| FR-APP-DSN-002 | Output sanitization | ✅ |
+| FR-APP-PRV-001 | Data minimization | 🟡 |
+| FR-APP-PRV-002 | Data lifecycle and retention | ❌ |
+| FR-APP-PRV-003 | Right to erasure | ❌ |
+| FR-APP-PRV-004 | Secure data disposal | ❌ |
 
 ---
 

@@ -10,7 +10,8 @@ The goal is not to judge whether the application *works*, but whether the code t
 
 | Field | Value |
 |-------|-------|
-| **Model** | Claude Opus 5.5 |
+| **Model** | Claude Opus 5.5 Medium |
+| **Token Consumption** | 2.29 million |
 | **Date** | 2026-Nov-03 |
 | **Tooling** | Trivy (dependency & container scanning), manual gap analysis against a Security Requirements Baseline |
 
